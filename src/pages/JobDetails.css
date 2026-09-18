@@ -1,0 +1,65 @@
+.job-details-page {
+  width: 100%;
+}
+
+.job-details-heading {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+}
+
+.job-details-card {
+  max-width: 900px;
+  border-radius: 12px !important;
+}
+
+.job-details-card .MuiCardContent-root {
+  padding: 32px;
+}
+
+.job-details-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.job-details-icon {
+  font-size: 48px !important;
+}
+
+.job-details-title {
+  font-size: 24px !important;
+  font-weight: 700 !important;
+}
+
+.job-details-company {
+  font-size: 16px !important;
+  margin-top: 4px !important;
+}
+
+.job-details-info {
+  display: flex;
+  gap: 32px;
+  margin: 24px 0;
+}
+
+.job-info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.job-section-title {
+  font-size: 20px !important;
+  font-weight: 700 !important;
+  margin-top: 24px !important;
+  margin-bottom: 8px !important;
+}
+
+.job-description {
+  line-height: 1.7 !important;
+}
+
+.apply-button {
+  margin-top: 28px !important;
+}
