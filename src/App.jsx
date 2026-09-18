@@ -1,9 +1,10 @@
 import MainLayout from "./layouts/MainLayout";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
     <MainLayout>
-      <h1>Placement Portal</h1>
+      <Dashboard />
     </MainLayout>
   );
 }

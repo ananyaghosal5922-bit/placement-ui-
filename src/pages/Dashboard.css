@@ -1,0 +1,40 @@
+.dashboard-page {
+  width: 100%;
+}
+
+.dashboard-heading {
+  font-size: 28px !important;
+  font-weight: 700 !important;
+  margin-bottom: 24px !important;
+}
+
+.dashboard-cards {
+  display: flex;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.dashboard-card {
+  width: 280px;
+  border-radius: 12px !important;
+}
+
+.dashboard-card .MuiCardContent-root {
+  padding: 24px;
+}
+
+.dashboard-icon {
+  font-size: 40px !important;
+  margin-bottom: 12px;
+}
+
+.dashboard-card-title {
+  font-size: 18px !important;
+  font-weight: 600 !important;
+}
+
+.dashboard-card-number {
+  font-size: 32px !important;
+  font-weight: 700 !important;
+  margin: 12px 0 20px !important;
+}
