@@ -1,3 +1,5 @@
+import { useEffect, useState } from "react";
+
 import {
   Box,
   Typography,
@@ -29,94 +31,119 @@ const steps = [
 ];
 
 function Applications() {
+
+const [application, setApplication] = useState(null);
+
+  useEffect(() => {
+    const savedApplication = localStorage.getItem("application");
+
+    if (savedApplication) {
+      setApplication(JSON.parse(savedApplication));
+    }
+  }, []);
   return (
     <Box className="applications-page">
 
       <Typography className="applications-heading">
-        Applications Tracker
-      </Typography>
+Applications Tracker
+</Typography>
 
-      <Card className="applications-card">
-        <CardContent>
+<Card className="applications-card">
+<CardContent>
 
-          <TableContainer>
-            <Table>
-              <TableHead>
-                <TableRow>
-                  <TableCell>Applicant</TableCell>
-                  <TableCell>Job</TableCell>
-                  <TableCell>Application Status</TableCell>
-                </TableRow>
-              </TableHead>
+<TableContainer>
+<Table>
+<TableHead>
+<TableRow>
+    <TableCell>Applicant</TableCell>
+    <TableCell>Job</TableCell>
+    <TableCell>Application Status</TableCell>
+</TableRow>
+</TableHead>
 
-              <TableBody>
-                <TableRow>
+<TableBody>
+<TableRow>
 
-                  <TableCell>
-                    <Box className="applicant-cell">
-                      <PersonIcon />
-                      <Typography>
-                        Ananya Ghosal
-                      </Typography>
-                    </Box>
-                  </TableCell>
+<TableCell>
+<Box className="applicant-cell">
+    <PersonIcon />
+    <Typography>
+     {application?.applicant || "No Application"}
+            </Typography>
+    </Box>
+    </TableCell>
 
-                  <TableCell>
-                    <Box className="job-cell">
-                      <WorkIcon />
-                      <Typography>
-                        Software Developer
-                      </Typography>
-                    </Box>
-                  </TableCell>
+    <TableCell>
+    <Box className="job-cell">
+        <WorkIcon />
+        <Typography>
+       {application?.job || "No Application"}
+        </Typography>
+    </Box>
+    </TableCell>
 
-                  <TableCell>
-                    <Select
-                      defaultValue="Under Review"
-                      size="small"
-                    >
-                      <MenuItem value="Applied">
-                        Applied
-                      </MenuItem>
+    <TableCell>
+    <Select
+  value={application?.status || "Applied"}
+  size="small"
+  onChange={(event) => {
+    const updatedApplication = {
+      ...application,
+      status: event.target.value,
+    };
 
-                      <MenuItem value="Under Review">
-                        Under Review
-                      </MenuItem>
+    setApplication(updatedApplication);
 
-                      <MenuItem value="Shortlisted">
-                        Shortlisted
-                      </MenuItem>
+    localStorage.setItem(
+      "application",
+      JSON.stringify(updatedApplication)
+    );
+  }}
+>
+    <MenuItem value="Applied">
+    Applied
+    </MenuItem>
 
-                      <MenuItem value="Selected">
-                        Selected
-                      </MenuItem>
-                    </Select>
-                  </TableCell>
+    <MenuItem value="Under Review">
+    Under Review
+    </MenuItem>
 
-                </TableRow>
-              </TableBody>
-            </Table>
+    <MenuItem value="Shortlisted">
+    Shortlisted
+    </MenuItem>
+
+    <MenuItem value="Selected">
+    Selected
+    </MenuItem>
+</Select>
+        </TableCell>
+
+    </TableRow>
+    </TableBody>
+</Table>
           </TableContainer>
 
-          <Typography className="status-heading">
-            Application Progress
-          </Typography>
+    <Typography className="status-heading">
+    Application Progress
+    </Typography>
 
-          <Stepper activeStep={1}>
-            {steps.map((step) => (
-              <Step key={step}>
-                <StepLabel>
-                  {step}
-                </StepLabel>
-              </Step>
-            ))}
-          </Stepper>
+   <Stepper
+  activeStep={steps.indexOf(application?.status || "Applied")}
+>
+    {steps.map((step) => (
+        <Step key={step}>
+        <StepLabel>
+            {step}
+        </StepLabel>
+        </Step>
+    ))}
+    </Stepper>
 
-        </CardContent>
-      </Card>
+</CardContent>
+</Card>
 
-    </Box>
-  );
+</Box>
+);
 }
 
 export default Applications;

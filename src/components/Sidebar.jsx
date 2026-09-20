@@ -10,9 +10,13 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import WorkIcon from "@mui/icons-material/Work";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 
+import { Link, useLocation } from "react-router-dom";
+
 import "./Sidebar.css";
 
 function Sidebar() {
+  const location = useLocation();
+
   return (
     <Box className="sidebar">
       <Box className="sidebar-logo">
@@ -20,7 +24,13 @@ function Sidebar() {
       </Box>
 
       <List>
-        <ListItemButton className="sidebar-item">
+
+        <ListItemButton
+          component={Link}
+          to="/"
+          className="sidebar-item active"
+          aria-current={location.pathname === "/" ? "page" : undefined}
+        >
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
@@ -28,7 +38,12 @@ function Sidebar() {
           <ListItemText primary="Dashboard" />
         </ListItemButton>
 
-        <ListItemButton className="sidebar-item">
+        <ListItemButton
+          component={Link}
+          to="/jobs"
+          className="sidebar-item"
+          aria-current={location.pathname === "/jobs" ? "page" : undefined}
+        >
           <ListItemIcon>
             <WorkIcon />
           </ListItemIcon>
@@ -36,13 +51,21 @@ function Sidebar() {
           <ListItemText primary="Jobs" />
         </ListItemButton>
 
-        <ListItemButton className="sidebar-item">
+        <ListItemButton
+          component={Link}
+          to="/applications"
+          className="sidebar-item"
+          aria-current={
+            location.pathname === "/applications" ? "page" : undefined
+          }
+        >
           <ListItemIcon>
             <AssignmentIcon />
           </ListItemIcon>
 
           <ListItemText primary="Applications" />
         </ListItemButton>
+
       </List>
     </Box>
   );
