@@ -63,3 +63,17 @@
 .apply-button {
   margin-top: 28px !important;
 }
+
+.application-stepper {
+  margin: 20px 0 30px;
+}
+
+.application-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.confirmation-content {
+  padding: 20px 0;
+}

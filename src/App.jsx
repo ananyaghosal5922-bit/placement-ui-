@@ -1,10 +1,10 @@
 import MainLayout from "./layouts/MainLayout";
-import JobDetails from "./pages/JobDetails";
+import Applications from "./pages/Applications";
 
 function App() {
   return (
     <MainLayout>
-      <JobDetails />
+      <Applications />
     </MainLayout>
   );
 }
