@@ -7,7 +7,7 @@ import TopBar from "../components/TopBar";
 
 import "./MainLayout.css";
 
-function MainLayout({ children }) {
+function MainLayout({ children, role, setRole }) {
   const location = useLocation();
 
   const getPageTitle = () => {
@@ -35,7 +35,11 @@ function MainLayout({ children }) {
       <Sidebar />
 
       <div className="main-content">
-        <TopBar title={getPageTitle()} />
+        <TopBar
+  title={getPageTitle()}
+  role={role}
+  setRole={setRole}
+/>
 
         <main className="page-content">
           {children}

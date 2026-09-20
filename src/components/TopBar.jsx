@@ -4,13 +4,15 @@ import {
   Typography,
   IconButton,
   Chip,
+  ToggleButton,
+  ToggleButtonGroup,
 } from "@mui/material";
 
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
 import "./TopBar.css";
 
-function TopBar({ title }) {
+function TopBar({ title, role, setRole }) {
   return (
     <AppBar position="static" className="topbar">
       <Toolbar className="topbar-toolbar">
@@ -20,6 +22,25 @@ function TopBar({ title }) {
         </Typography>
 
         <div className="topbar-actions">
+
+          <ToggleButtonGroup
+            value={role}
+            exclusive
+            size="small"
+            onChange={(event, newRole) => {
+              if (newRole !== null) {
+                setRole(newRole);
+              }
+            }}
+          >
+            <ToggleButton value="admin">
+              Admin
+            </ToggleButton>
+
+            <ToggleButton value="student">
+              Student
+            </ToggleButton>
+          </ToggleButtonGroup>
 
           <IconButton className="notification-button">
             <NotificationsNoneIcon />
