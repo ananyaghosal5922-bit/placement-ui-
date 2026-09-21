@@ -1,294 +1,293 @@
-import { useState } from "react";
-
+import React, { useState } from "react";
 import {
   Box,
   Typography,
   Card,
   CardContent,
   Button,
+  Chip,
+  Grid,
+  Tabs,
+  Tab,
   Dialog,
-  DialogTitle,
   DialogContent,
-  DialogActions,
-  Stepper,
-  Step,
-  StepLabel,
-  TextField,
+  IconButton,
 } from "@mui/material";
-
-import WorkIcon from "@mui/icons-material/Work";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
-import AttachMoneyIcon from "@mui/icons-material/AttachMoney";
-
+import { useNavigate } from "react-router-dom";
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+import WorkOutlinedIcon from "@mui/icons-material/WorkOutlined";
+import CheckCircleIcon from "@mui/icons-material/CheckCircle";
+import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
+import CloseIcon from "@mui/icons-material/Close";
 import "./JobDetails.css";
 
-const steps = ["Personal Details", "Education", "Confirmation"];
-
-function JobDetails() {
-  const [open, setOpen] = useState(false);
-  const [activeStep, setActiveStep] = useState(0);
-
-const [formData, setFormData] = useState({
-  fullName: "",
-  email: "",
-  phone: "",
-  college: "",
-  degree: "",
-  cgpa: "",
-});
-
-  const handleOpen = () => {
-    console.log("Apply Now clicked");
-    setOpen(true);
-    setActiveStep(0);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
-
-  const handleSubmit = () => {
-  localStorage.setItem(
-    "application",
-    JSON.stringify({
-      applicant: formData.fullName,
-      job: "Software Developer",
-      status: "Applied",
-      email: formData.email,
-      phone: formData.phone,
-      college: formData.college,
-      degree: formData.degree,
-      cgpa: formData.cgpa,
-    })
+function CustomTabPanel(props) {
+  const { children, value, index, ...other } = props;
+  return (
+    <div role="tabpanel" hidden={value !== index} {...other}>
+      {value === index && <Box className="tab-panel-content">{children}</Box>}
+    </div>
   );
+}
 
-  setOpen(false);
-};
+export default function JobDetails() {
+  const navigate = useNavigate();
+  const [tabIndex, setTabIndex] = useState(0);
+  const [openDialog, setOpenDialog] = useState(false);
+  const [applicationId, setApplicationId] = useState("");
 
-  const handleChange = (event) => {
-  setFormData({
-    ...formData,
-    [event.target.name]: event.target.value,
-  });
-};
-
-  const handleNext = () => {
-    setActiveStep((prevStep) => prevStep + 1);
+  const handleTabChange = (event, newValue) => {
+    setTabIndex(newValue);
   };
 
-  const handleBack = () => {
-    setActiveStep((prevStep) => prevStep - 1);
+  const handleApply = () => {
+    const generatedId = `APP-${Math.floor(1000 + Math.random() * 9000)}-${Math.floor(1000 + Math.random() * 9000)}`;
+    setApplicationId(generatedId);
+
+    const newApp = {
+      company: "Stripe",
+      title: "Software Engineer - Developer Relations",
+      date: new Date().toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      }),
+      activeStep: 0,
+      statusLabel: "Applied",
+      appId: generatedId,
+    };
+
+    localStorage.setItem("application", JSON.stringify(newApp));
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+    navigate("/applications");
   };
 
   return (
-    <Box className="job-details-page">
+    <Box className="job-details-container">
+      {/* Back Button */}
+      <Button
+        startIcon={<ArrowBackIcon />}
+        onClick={() => navigate("/jobs")}
+        className="back-to-jobs-btn"
+      >
+        Back to Jobs
+      </Button>
 
-  <Typography className="job-details-heading">
-    Job Specification
-  </Typography>
+      {/* Main Company / Role Banner Header */}
+      <Card className="header-banner-card">
+        <CardContent className="header-banner-content">
+          <Box className="company-icon-box">
+            <WorkOutlinedIcon className="brand-work-icon" />
+          </Box>
+          <Box className="header-text-details">
+            <Typography variant="h5" className="role-heading">
+              Software Engineer - Developer Relations
+            </Typography>
+            <Typography variant="body2" className="company-sub-line">
+              Stripe India • Bengaluru, KA • Posted 2 days ago
+            </Typography>
+          </Box>
+          <Chip label="Eligible" className="eligible-status-chip" />
+        </CardContent>
+      </Card>
 
-  <Card className="job-details-card">
-<CardContent>
+      {/* Two Column Section */}
+      <Grid container spacing={3} className="details-grid-wrapper">
+        {/* Left Column: Job Specification & Eligibility */}
+        <Grid item xs={12} md={8}>
+          <Card className="spec-card-container">
+            <CardContent className="card-content-padding">
+              <Typography variant="h6" className="spec-main-title">
+                Job Specification
+              </Typography>
 
-  <Box className="job-details-header">
-    <WorkIcon className="job-details-icon" />
+              <Tabs
+                value={tabIndex}
+                onChange={handleTabChange}
+                className="spec-navigation-tabs"
+              >
+                <Tab label="Job Description" className="tab-item-btn" />
+                <Tab label="Eligibility Criteria" className="tab-item-btn" />
+                <Tab label="About Company" className="tab-item-btn" />
+              </Tabs>
 
-<Box>
-  <Typography className="job-details-title">
-    Software Developer
-  </Typography>
+              {/* Tab 1: Description */}
+              <CustomTabPanel value={tabIndex} index={0}>
+                <Typography className="section-block-title">
+                  About Stripe
+                </Typography>
+                <Typography variant="body2" className="body-description-text">
+                  Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities.
+                </Typography>
 
-  <Typography className="job-details-company">
-    ABC Technologies
-  </Typography>
-</Box>
-</Box>
+                <Typography className="section-block-title section-spacing-top">
+                  Responsibilities
+                </Typography>
+                <ul className="responsibilities-list">
+                  <li>Build developer resources, tutorials, and documentation for API integrations.</li>
+                  <li>Design high-volume distributed developer tooling and scalable API endpoints.</li>
+                  <li>Advocate for developers internally and directly improve product user experience.</li>
+                  <li>Engage with global developer communities through technical blogs and open-source releases.</li>
+                </ul>
+              </CustomTabPanel>
 
-<Box className="job-details-info">
-  <Box className="job-info-item">
-    <LocationOnIcon />
-    <Typography>Kolkata</Typography>
-  </Box>
+              {/* Tab 2: Eligibility */}
+              <CustomTabPanel value={tabIndex} index={1}>
+                <Typography className="section-block-title">
+                  Academic Requirements
+                </Typography>
+                <Typography variant="body2" className="body-description-text">
+                  Must be enrolled in B.Tech / B.E. Computer Science, Information Technology, or related circuit branches with no active backlogs at the time of drive registration.
+                </Typography>
+              </CustomTabPanel>
 
-  <Box className="job-info-item">
-    <AttachMoneyIcon />
-    <Typography>6 LPA</Typography>
-  </Box>
-</Box>
+              {/* Tab 3: About Company */}
+              <CustomTabPanel value={tabIndex} index={2}>
+                <Typography className="section-block-title">
+                  Global Operations
+                </Typography>
+                <Typography variant="body2" className="body-description-text">
+                  Stripe operates in over 40 countries, handling hundreds of billions of dollars every year for forward-thinking businesses around the world.
+                </Typography>
+              </CustomTabPanel>
 
-  <Typography className="job-section-title">
-    Job Description
-  </Typography>
+              {/* Your Eligibility Checklist Card */}
+              <Box className="eligibility-checklist-card">
+                <Typography className="checklist-card-title">
+                  Your Eligibility Checklist
+                </Typography>
 
-  <Typography className="job-description">
-    We are looking for a Software Developer to join our
-    team. The candidate will work on developing and
-    maintaining software applications.
-  </Typography>
+                <Box className="checklist-row">
+                  <CheckCircleIcon className="check-icon-green" />
+                  <Typography variant="body2" className="checklist-label-text">
+                    <strong>CGPA Requirement:</strong> Your CGPA 8.2 (Req: 7.5+)
+                  </Typography>
+                </Box>
 
-  <Typography className="job-section-title">
-    Responsibilities
-  </Typography>
+                <Box className="checklist-row">
+                  <CheckCircleIcon className="check-icon-green" />
+                  <Typography variant="body2" className="checklist-label-text">
+                    <strong>No Active Backlogs:</strong> Verified (0 Active)
+                  </Typography>
+                </Box>
 
-  <Typography className="job-description">
-    • Develop software applications
-    <br />
-    • Fix bugs and improve existing features
-    <br />
-  • Work with the development team
-</Typography>
+                <Box className="checklist-row">
+                  <CheckCircleIcon className="check-icon-green" />
+                  <Typography variant="body2" className="checklist-label-text">
+                    <strong>Branch Eligibility:</strong> CSE, IT, ECE Eligible (Your branch: CSE)
+                  </Typography>
+                </Box>
+              </Box>
+            </CardContent>
+          </Card>
+        </Grid>
 
-  <Button
-    variant="contained"
-    className="apply-button"
-    onClick={handleOpen}
-  >
-    Apply Now
-  </Button>
+        {/* Right Column: Application Panel */}
+        <Grid item xs={12} md={4}>
+          <Card className="app-panel-card-container">
+            <CardContent className="card-content-padding">
+              <Typography variant="h6" className="app-panel-title">
+                Application Panel
+              </Typography>
+              <Typography variant="caption" className="app-panel-subtitle">
+                VERIFY YOUR PROFILE DETAILS BEFORE SUBMITTING
+              </Typography>
 
-</CardContent>
-</Card>
+              <Box className="panel-field-group">
+                <Typography className="panel-field-label">FULL NAME</Typography>
+                <Typography className="panel-field-value"> Ananya Ghosal</Typography>
+              </Box>
 
-<Dialog
-open={open}
-onClose={handleClose}
-fullWidth
-maxWidth="sm"
->
-<DialogTitle>
-  Apply for Software Developer
-</DialogTitle>
+              <Box className="panel-field-group">
+                <Typography className="panel-field-label">EMAIL ADDRESS</Typography>
+                <Typography className="panel-field-value">ananya.ghosal@university.edu</Typography>
+              </Box>
 
-<DialogContent>
+              <Box className="panel-field-group">
+                <Typography className="panel-field-label">PHONE NUMBER</Typography>
+                <Typography className="panel-field-value">+91 98765 43210</Typography>
+              </Box>
 
-<Stepper activeStep={activeStep} className="application-stepper">
-  {steps.map((label) => (
-    <Step key={label}>
-      <StepLabel>{label}</StepLabel>
-    </Step>
-  ))}
-</Stepper>
+              <Box className="panel-field-group">
+                <Typography className="panel-field-label">RESUME / CV ATTACHED</Typography>
+                <Box className="resume-badge-box">
+                  <InsertDriveFileIcon className="resume-file-icon" />
+                  <Typography className="resume-file-name">
+                    Resume_Ananya_Ghosal_2024.pdf
+                  </Typography>
+                </Box>
+              </Box>
 
-{activeStep === 0 && (
-<Box className="application-form">
-  <TextField
-  label="Full Name"
-  name="fullName"
-  value={formData.fullName}
-  onChange={handleChange}
-  fullWidth
-/>
-<TextField
-  label="Email"
-  name="email"
-  value={formData.email}
-  onChange={handleChange}
-  fullWidth
-/>
+              <Box className="panel-field-group">
+                <Typography className="panel-field-label">KEY SKILLS MATCHED</Typography>
+                <Box className="skills-chip-wrapper">
+                  <Chip label="Python" size="small" className="skill-chip" />
+                  <Chip label="Data Structures" size="small" className="skill-chip" />
+                  <Chip label="React.js" size="small" className="skill-chip" />
+                  <Chip label="API Development" size="small" className="skill-chip" />
+                </Box>
+              </Box>
 
-  <TextField
-  label="Phone Number"
-  name="phone"
-  value={formData.phone}
-  onChange={handleChange}
-  fullWidth
-/>
-</Box>
-)}
+              <Button
+                variant="contained"
+                fullWidth
+                className="submit-application-btn"
+                onClick={handleApply}
+              >
+                Submit Application
+              </Button>
+            </CardContent>
+          </Card>
+        </Grid>
+      </Grid>
 
-      {activeStep === 1 && (
-<Box className="application-form">
- <TextField
-  label="College Name"
-  name="college"
-  value={formData.college}
-  onChange={handleChange}
-  fullWidth
-/>
+      {/* Modal Popup: Application Submitted */}
+      <Dialog
+        open={openDialog}
+        onClose={handleCloseDialog}
+        className="submission-dialog-container"
+        PaperProps={{
+          className: "dialog-paper-custom",
+        }}
+      >
+        <IconButton
+          onClick={handleCloseDialog}
+          className="dialog-close-icon-btn"
+        >
+          <CloseIcon />
+        </IconButton>
+        <DialogContent className="dialog-inner-content">
+          <Box className="modal-success-icon-circle">
+            <CheckCircleIcon className="modal-check-mark" />
+          </Box>
 
-  <TextField
-  label="Degree"
-  name="degree"
-  value={formData.degree}
-  onChange={handleChange}
-  fullWidth
-/>
+          <Typography variant="h6" className="modal-title-text">
+            Application Submitted!
+          </Typography>
 
-<TextField
-  label="CGPA"
-  name="cgpa"
-  value={formData.cgpa}
-  onChange={handleChange}
-  fullWidth
-/>
-</Box>
-)}
+          <Typography variant="body2" className="modal-body-subtext">
+            Your profile has been shared with Stripe India. You will receive updates directly in your portal.
+          </Typography>
 
-{activeStep === 2 && (
-  <Box className="confirmation-content">
+          <Box className="app-ref-box">
+            <Typography className="ref-box-label">APPLICATION REF ID</Typography>
+            <Typography className="ref-box-id">{applicationId}</Typography>
+          </Box>
 
-    <Typography variant="h6">
-      Review Your Details
-    </Typography>
-
-    <Typography>
-      <strong>Name:</strong> {formData.fullName}
-    </Typography>
-
-    <Typography>
-      <strong>Email:</strong> {formData.email}
-    </Typography>
-
-    <Typography>
-      <strong>Phone:</strong> {formData.phone}
-    </Typography>
-
-    <Typography>
-      <strong>College:</strong> {formData.college}
-    </Typography>
-
-    <Typography>
-      <strong>Degree:</strong> {formData.degree}
-    </Typography>
-
-    <Typography>
-      <strong>CGPA:</strong> {formData.cgpa}
-    </Typography>
-
-  </Box>
-)}
-
-</DialogContent>
-
-<DialogActions>
-
-  {activeStep > 0 && (
-    <Button onClick={handleBack}>
-      Back
-    </Button>
-  )}
-
-  {activeStep < steps.length - 1 ? (
-    <Button
-      variant="contained"
-      onClick={handleNext}
-    >
-      Next
-    </Button>
-  ) : (
-    <Button
-  variant="contained"
-  onClick={handleSubmit}
->
-  Submit Application
-</Button>
-  )}
-
-</DialogActions>
-</Dialog>
-
-</Box>
-);
+          <Button
+            variant="contained"
+            fullWidth
+            onClick={handleCloseDialog}
+            className="dialog-done-action-btn"
+          >
+            Done
+          </Button>
+        </DialogContent>
+      </Dialog>
+    </Box>
+  );
 }
-
-export default JobDetails;

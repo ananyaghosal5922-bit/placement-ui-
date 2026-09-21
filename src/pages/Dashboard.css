@@ -1,40 +1,245 @@
 .dashboard-page {
-  width: 100%;
+  padding: 30px;
+  background: #f7f8fc;
+  min-height: calc(100vh - 64px);
 }
 
 .dashboard-heading {
   font-size: 28px !important;
-  font-weight: 700 !important;
-  margin-bottom: 24px !important;
+  font-weight: 600 !important;
+  margin-bottom: 22px !important;
 }
 
-.dashboard-cards {
-  display: flex;
-  gap: 24px;
-  flex-wrap: wrap;
-}
 
-.dashboard-card {
-  width: 280px;
+.welcome-card {
+  margin-bottom: 24px;
   border-radius: 12px !important;
 }
 
-.dashboard-card .MuiCardContent-root {
-  padding: 24px;
+.welcome-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px !important;
 }
 
-.dashboard-icon {
-  font-size: 40px !important;
-  margin-bottom: 12px;
+.welcome-title {
+  font-size: 22px !important;
+  font-weight: 600 !important;
+  margin-bottom: 8px !important;
 }
 
-.dashboard-card-title {
-  font-size: 18px !important;
+.welcome-text {
+  color: #666;
+}
+
+.profile-progress {
+  width: 260px;
+}
+
+.profile-label {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px !important;
+  font-size: 13px !important;
+}
+
+.profile-label span {
+  font-weight: 600;
+}
+
+.dashboard-summary {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.summary-card {
+  border-radius: 12px !important;
+}
+
+.summary-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 14px;
+}
+
+.summary-top svg {
+  color: #673ab7;
+}
+
+.summary-number {
+  font-size: 30px !important;
+  font-weight: 600 !important;
+  margin: 12px 0 4px !important;
+}
+
+.summary-blue {
+  color: #1976d2;
+  font-size: 13px !important;
+}
+
+.summary-green {
+  color: #2e7d32;
+  font-size: 13px !important;
+}
+
+.summary-orange {
+  color: #ed6c02;
+  font-size: 13px !important;
+}
+
+
+.section-title {
+  font-size: 20px !important;
+  font-weight: 600 !important;
+  margin-bottom: 16px !important;
+}
+
+
+.drive-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-bottom: 28px;
+}
+
+.drive-card {
+  border-radius: 12px !important;
+}
+
+.drive-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.drive-header svg {
+  color: #673ab7;
+  font-size: 34px;
+}
+
+.drive-title {
+  font-weight: 600 !important;
+  margin-bottom: 3px !important;
+}
+
+.drive-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.salary {
   font-weight: 600 !important;
 }
 
-.dashboard-card-number {
-  font-size: 32px !important;
-  font-weight: 700 !important;
-  margin: 12px 0 20px !important;
+
+.dashboard-bottom {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+
+.activity-card,
+.deadline-card {
+  border-radius: 12px !important;
+}
+
+.activity-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.activity-dot {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #673ab7;
+  flex-shrink: 0;
+}
+
+.activity-time {
+  color: #888;
+  font-size: 12px !important;
+  margin-top: 4px !important;
+}
+
+.status-badge {
+  margin-left: auto;
+  background: #ede7f6;
+  color: #673ab7;
+  padding: 5px 10px;
+  border-radius: 15px;
+  font-size: 12px;
+}
+
+.deadline-item {
+  padding: 15px 0;
+  border-bottom: 1px solid #eeeeee;
+}
+
+.deadline-red {
+  color: #d32f2f;
+  font-size: 13px !important;
+  margin-top: 5px !important;
+}
+
+.deadline-orange {
+  color: #ed6c02;
+  font-size: 13px !important;
+  margin-top: 5px !important;
+}
+
+
+@media (max-width: 1000px) {
+  .dashboard-summary {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .drive-cards {
+    grid-template-columns: 1fr;
+  }
+
+  .dashboard-bottom {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .dashboard-page {
+    padding: 15px;
+  }
+
+  .dashboard-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .welcome-content {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+
+  .profile-progress {
+    width: 100%;
+  }
+}
+.dashboard-page {
+  width: 100%;
+  box-sizing: border-box;
+  background-color: #f8fafc;
+}
+
+.dashboard-page {
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
 }

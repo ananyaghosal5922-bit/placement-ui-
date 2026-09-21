@@ -4,8 +4,6 @@ import {
   Typography,
   IconButton,
   Chip,
-  ToggleButton,
-  ToggleButtonGroup,
 } from "@mui/material";
 
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
@@ -23,25 +21,7 @@ function TopBar({ title, role, setRole }) {
 
         <div className="topbar-actions">
 
-          <ToggleButtonGroup
-            value={role}
-            exclusive
-            size="small"
-            onChange={(event, newRole) => {
-              if (newRole !== null) {
-                setRole(newRole);
-              }
-            }}
-          >
-            <ToggleButton value="admin">
-              Admin
-            </ToggleButton>
-
-            <ToggleButton value="student">
-              Student
-            </ToggleButton>
-          </ToggleButtonGroup>
-
+         
           <IconButton className="notification-button">
             <NotificationsNoneIcon />
           </IconButton>

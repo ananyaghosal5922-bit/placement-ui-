@@ -1,0 +1,180 @@
+.jobs-page-wrapper {
+  width: 100% !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.jobs-top-header {
+  margin-bottom: 16px;
+}
+
+.page-heading {
+  font-weight: 700 !important;
+  color: #0f172a;
+}
+
+.section-title {
+  font-weight: 700 !important;
+  color: #1e293b;
+  margin-top: 16px !important;
+}
+
+.section-subtitle {
+  color: #64748b;
+  margin-bottom: 16px !important;
+}
+
+.grid-margin-bottom {
+  margin-bottom: 8px !important;
+}
+
+/* Card Rules */
+.job-card {
+  width: 100%;
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+}
+
+.non-tech-border {
+  border: 1.5px solid #6366f1 !important;
+}
+
+.card-padding {
+  padding: 20px !important;
+}
+
+.card-top-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.job-title-text {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #0f172a;
+}
+
+.job-company-text {
+  font-size: 14px !important;
+  color: #64748b;
+}
+
+.closing-chip {
+  background-color: #fef3c7 !important;
+  color: #d97706 !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+
+.eligible-chip {
+  background-color: #d1fae5 !important;
+  color: #059669 !important;
+  font-weight: 600 !important;
+  border-radius: 6px !important;
+}
+
+.match-info-text {
+  font-size: 13px !important;
+  color: #64748b;
+  margin-top: 12px !important;
+  margin-bottom: 16px !important;
+}
+
+.meta-info-container {
+  display: flex;
+  gap: 40px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+
+.meta-label {
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  color: #94a3b8;
+  letter-spacing: 0.5px;
+}
+
+.meta-value {
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  color: #1e293b;
+  margin-top: 2px !important;
+}
+
+.card-bottom-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 12px;
+}
+
+.pay-range-text {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+  color: #4f46e5;
+}
+
+.apply-primary-btn {
+  background-color: #4f46e5 !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  padding: 6px 20px !important;
+  box-shadow: none !important;
+}
+
+/* Search Bar Rules */
+.search-bar-wrapper {
+  display: flex;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.search-input {
+  flex-grow: 1;
+  background-color: #f8fafc;
+}
+
+.search-input .MuiOutlinedInput-root {
+  border-radius: 8px !important;
+}
+
+.search-icon {
+  color: #94a3b8;
+}
+
+.filter-outline-btn {
+  text-transform: none !important;
+  color: #475569 !important;
+  border-color: #cbd5e1 !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  padding: 8px 16px !important;
+}
+
+.search-solid-btn {
+  background-color: #4f46e5 !important;
+  text-transform: none !important;
+  border-radius: 8px !important;
+  font-weight: 600 !important;
+  padding: 8px 24px !important;
+  box-shadow: none !important;
+}
+
+/* Prevents horizontal scrolling caused by MUI Grid negative margins */
+.MuiGrid-container {
+  width: 100% !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}

@@ -42,21 +42,3 @@
   height: 40px !important;
 }
 
-.topbar-actions .MuiToggleButtonGroup-root {
-  margin-right: 10px;
-}
-
-.topbar-actions .MuiToggleButton-root {
-  text-transform: none;
-  font-weight: 500;
-}
-
-.topbar-actions .MuiToggleButton-root.Mui-selected {
-  background-color: #673ab7 !important;
-  color: white !important;
-}
-
-.topbar-actions .MuiToggleButton-root.Mui-selected:hover {
-  background-color: #5e35b1 !important;
-  color: white !important;
-}

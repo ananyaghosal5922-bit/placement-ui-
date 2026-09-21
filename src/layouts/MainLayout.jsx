@@ -41,7 +41,10 @@ function MainLayout({ children, role, setRole }) {
   setRole={setRole}
 />
 
-        <main className="page-content">
+        <main 
+         className="page-content"
+  style={{ color: "black", backgroundColor: "white", minHeight: "500px" }}
+>
           {children}
         </main>
       </div>

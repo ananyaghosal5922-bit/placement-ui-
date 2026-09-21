@@ -1,0 +1,127 @@
+.applications-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.applications-heading {
+  font-weight: 700 !important;
+  color: #0f172a;
+}
+
+.summary-grid {
+  margin-bottom: 4px;
+}
+
+.summary-card {
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: none !important;
+}
+
+.summary-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.summary-num {
+  font-weight: 700 !important;
+  margin-top: 8px !important;
+}
+
+.icon-box {
+  padding: 8px;
+  border-radius: 8px;
+  display: flex;
+}
+
+.purple-bg { background-color: #eef2ff; }
+.orange-bg { background-color: #fef3c7; }
+.green-bg { background-color: #d1fae5; }
+.red-bg { background-color: #fee2e2; }
+
+.app-filter-bar {
+  display: flex;
+  gap: 12px;
+  background-color: #ffffff;
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+}
+
+.filter-select {
+  background-color: #ffffff;
+  min-width: 140px;
+  border-radius: 8px !important;
+}
+
+.table-card {
+  border-radius: 12px !important;
+  border: 1px solid #e2e8f0 !important;
+  box-shadow: none !important;
+}
+
+.table-title {
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+}
+
+.table-header-row th {
+  background-color: #f8fafc;
+  font-weight: 700;
+  color: #475569;
+  font-size: 12px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.data-row td {
+  border-bottom: none !important;
+  padding-top: 20px;
+}
+
+.company-cell {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.company-icon-box {
+  background-color: #eef2ff;
+  padding: 6px;
+  border-radius: 8px;
+  display: flex;
+}
+
+.status-chip {
+  font-weight: 600 !important;
+}
+
+.status-chip.applied { background-color: #f1f5f9; color: #475569; }
+.status-chip.shortlisted { background-color: #e0f2fe; color: #0369a1; }
+.status-chip.interview-scheduled { background-color: #fef3c7; color: #b45309; }
+
+.view-link {
+  text-transform: none !important;
+  color: #4f46e5 !important;
+  font-weight: 600 !important;
+}
+
+.stepper-row td {
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e2e8f0 !important;
+}
+
+.stepper-wrapper {
+  padding: 8px 16px;
+  background-color: #ffffff;
+}
+
+.MuiStepIcon-root.Mui-active {
+  color: #4f46e5 !important;
+}
+
+.MuiStepIcon-root.Mui-completed {
+  color: #4f46e5 !important;
+}
