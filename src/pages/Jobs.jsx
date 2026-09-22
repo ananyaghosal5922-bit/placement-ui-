@@ -13,7 +13,6 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 import { useNavigate } from "react-router-dom";
-import "./Jobs.css";
 
 export default function Jobs() {
   const navigate = useNavigate();
@@ -23,43 +22,43 @@ export default function Jobs() {
   };
 
   return (
-    <Box className="jobs-page-wrapper">
-      {/* Top Header */}
-      <Box className="jobs-top-header">
-        <Typography variant="h5" className="page-heading">
+    <Box sx={{ p: { xs: 2, md: 4 }, backgroundColor: "#f8fafc", minHeight: "100vh" }}>
+
+      <Box sx={{ mb: 4 }}>
+        <Typography variant="h5" sx={{ fontWeight: 700, color: "#172033" }}>
           Explore Placement Jobs
         </Typography>
       </Box>
 
-      {/* Non Technical Section */}
-      <Typography variant="h6" className="section-title">
+
+      <Typography variant="h6" sx={{ mt: 2, fontWeight: 700, color: "#172033" }}>
         Eligible Jobs (Non Technical)
       </Typography>
-      <Typography variant="body2" className="section-subtitle">
+      <Typography variant="body2" sx={{ mt: 0.5, mb: 2, color: "#64748b" }}>
         Based on your skills and practice assessment performance
       </Typography>
 
-      <Grid container spacing={2.5} className="grid-margin-bottom">
+      <Grid container spacing={2.5} sx={{ mb: 4 }}>
         <Grid item xs={12} md={6}>
-          <Card className="job-card non-tech-border">
-            <CardContent className="card-padding">
-              <Box className="card-top-row">
+          <Card sx={{ height: "100%", border: "1px solid #e2e8f0", borderLeft: "4px solid #f59e0b", borderRadius: 2, boxShadow: "0 2px 8px rgba(15,23,42,.06)" }}>
+            <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
+              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 2 }}>
                 <Box>
-                  <Typography className="job-title-text">Consultant</Typography>
-                  <Typography className="job-company-text">NVIDIA</Typography>
+                  <Typography sx={{ fontWeight: 700, color: "#172033" }}>Consultant</Typography>
+                  <Typography sx={{ color: "#64748b", mt: .5 }}>NVIDIA</Typography>
                 </Box>
-                <Chip label="Closing Soon" className="closing-chip" size="small" />
+                <Chip label="Closing Soon" size="small" sx={{ color: "#b45309", backgroundColor: "#fef3c7", fontWeight: 600 }} />
               </Box>
 
-              <Typography className="match-info-text">
+              <Typography sx={{ color: "#64748b", fontSize: ".875rem", my: 2 }}>
                 Based on Python &amp; C++ assessment match
               </Typography>
 
-              <Box className="card-bottom-row">
-                <Typography className="pay-range-text">5-10 LPA</Typography>
+              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography sx={{ fontWeight: 700, color: "#172033" }}>5-10 LPA</Typography>
                 <Button
                   variant="contained"
-                  className="apply-primary-btn"
+                  sx={{ textTransform: "none", borderRadius: 1.5, backgroundColor: "#2563eb" }}
                   onClick={handleApplyClick}
                 >
                   Apply Now
@@ -70,25 +69,25 @@ export default function Jobs() {
         </Grid>
 
         <Grid item xs={12} md={6}>
-          <Card className="job-card non-tech-border">
-            <CardContent className="card-padding">
-              <Box className="card-top-row">
+          <Card sx={{ height: "100%", border: "1px solid #e2e8f0", borderLeft: "4px solid #f59e0b", borderRadius: 2, boxShadow: "0 2px 8px rgba(15,23,42,.06)" }}>
+            <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
+              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 2 }}>
                 <Box>
-                  <Typography className="job-title-text">Customer Support</Typography>
-                  <Typography className="job-company-text">Salesforce</Typography>
+                  <Typography sx={{ fontWeight: 700, color: "#172033" }}>Customer Support</Typography>
+                  <Typography sx={{ color: "#64748b", mt: .5 }}>Salesforce</Typography>
                 </Box>
-                <Chip label="Eligible" className="eligible-chip" size="small" />
+                <Chip label="Eligible" size="small" sx={{ color: "#15803d", backgroundColor: "#dcfce7", fontWeight: 600 }} />
               </Box>
 
-              <Typography className="match-info-text">
+              <Typography sx={{ color: "#64748b", fontSize: ".875rem", my: 2 }}>
                 Matches CGPA &amp; Skills
               </Typography>
 
-              <Box className="card-bottom-row">
-                <Typography className="pay-range-text">7-10 LPA</Typography>
+              <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                <Typography sx={{ fontWeight: 700, color: "#172033" }}>7-10 LPA</Typography>
                 <Button
                   variant="contained"
-                  className="apply-primary-btn"
+                  sx={{ textTransform: "none", borderRadius: 1.5, backgroundColor: "#2563eb" }}
                   onClick={handleApplyClick}
                 >
                   Apply Now
@@ -99,17 +98,17 @@ export default function Jobs() {
         </Grid>
       </Grid>
 
-      {/* Search and Filters Bar */}
-      <Box className="search-bar-wrapper">
+
+      <Box sx={{ display: "flex", gap: 1.5, alignItems: "center", my: 4, flexWrap: "wrap" }}>
         <TextField
           placeholder="Search companies, job titles, or tech stacks..."
           variant="outlined"
           size="small"
-          className="search-input"
+          sx={{ flex: 1, minWidth: 260 }}
           InputProps={{
             startAdornment: (
               <InputAdornment position="start">
-                <SearchIcon className="search-icon" />
+                <SearchIcon sx={{ color: "#64748b" }} />
               </InputAdornment>
             ),
           }}
@@ -117,17 +116,17 @@ export default function Jobs() {
         <Button
           variant="outlined"
           startIcon={<FilterListIcon />}
-          className="filter-outline-btn"
+          sx={{ textTransform: "none", borderColor: "#cbd5e1", color: "#334155" }}
         >
           Filters
         </Button>
-        <Button variant="contained" className="search-solid-btn">
+        <Button variant="contained" sx={{ textTransform: "none", backgroundColor: "#2563eb" }}>
           Search
         </Button>
       </Box>
 
-      {/* Technical Section */}
-      <Typography variant="h6" className="section-title">
+
+      <Typography variant="h6" sx={{ mt: 2, mb: 2, fontWeight: 700, color: "#172033" }}>
         Eligible Jobs (Technical)
       </Typography>
 
@@ -163,32 +162,32 @@ export default function Jobs() {
           },
         ].map((job, idx) => (
           <Grid item xs={12} md={6} key={idx}>
-            <Card className="job-card">
-              <CardContent className="card-padding">
-                <Box className="card-top-row">
+            <Card sx={{ height: "100%", border: "1px solid #e2e8f0", borderRadius: 2, boxShadow: "0 2px 8px rgba(15,23,42,.06)" }}>
+              <CardContent sx={{ p: 2.5, "&:last-child": { pb: 2.5 } }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 2 }}>
                   <Box>
-                    <Typography className="job-title-text">{job.title}</Typography>
-                    <Typography className="job-company-text">{job.company}</Typography>
+                    <Typography sx={{ fontWeight: 700, color: "#172033" }}>{job.title}</Typography>
+                    <Typography sx={{ color: "#64748b", mt: .5 }}>{job.company}</Typography>
                   </Box>
-                  <Chip label="Eligible" className="eligible-chip" size="small" />
+                  <Chip label="Eligible" size="small" sx={{ color: "#15803d", backgroundColor: "#dcfce7", fontWeight: 600 }} />
                 </Box>
 
-                <Box className="meta-info-container">
+                <Box sx={{ display: "flex", gap: 6, my: 2 }}>
                   <Box>
-                    <Typography className="meta-label">DEADLINE</Typography>
-                    <Typography className="meta-value">{job.deadline}</Typography>
+                    <Typography sx={{ color: "#94a3b8", fontSize: ".7rem", fontWeight: 700 }}>DEADLINE</Typography>
+                    <Typography sx={{ color: "#334155" }}>{job.deadline}</Typography>
                   </Box>
                   <Box>
-                    <Typography className="meta-label">OPENINGS</Typography>
-                    <Typography className="meta-value">{job.openings}</Typography>
+                    <Typography sx={{ color: "#94a3b8", fontSize: ".7rem", fontWeight: 700 }}>OPENINGS</Typography>
+                    <Typography sx={{ color: "#334155" }}>{job.openings}</Typography>
                   </Box>
                 </Box>
 
-                <Box className="card-bottom-row">
-                  <Typography className="pay-range-text">{job.pay}</Typography>
+                <Box sx={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+                  <Typography sx={{ fontWeight: 700, color: "#172033" }}>{job.pay}</Typography>
                   <Button
                     variant="contained"
-                    className="apply-primary-btn"
+                    sx={{ textTransform: "none", borderRadius: 1.5, backgroundColor: "#2563eb" }}
                     onClick={handleApplyClick}
                   >
                     Apply Now

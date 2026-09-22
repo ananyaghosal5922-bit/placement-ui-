@@ -12,26 +12,41 @@ import AssignmentIcon from "@mui/icons-material/Assignment";
 
 import { Link, useLocation } from "react-router-dom";
 
-import "./Sidebar.css";
-
 function Sidebar() {
   const location = useLocation();
 
   return (
-    <Box className="sidebar">
-      <Box className="sidebar-logo">
+    <Box
+      sx={{
+        width: 240,
+        minHeight: "100vh",
+        bgcolor: "background.paper",
+        borderRight: 1,
+        borderColor: "divider",
+      }}
+    >
+      <Box
+        sx={{
+          p: 2,
+          fontSize: "1.25rem",
+          fontWeight: 700,
+        }}
+      >
         Placement Portal
       </Box>
 
       <List>
-
         <ListItemButton
           component={Link}
           to="/"
-          className="sidebar-item active"
+          sx={{
+            color: location.pathname === "/" ? "primary.main" : "inherit",
+            bgcolor: location.pathname === "/" ? "action.selected" : "transparent",
+            "&:hover": { bgcolor: "action.hover" },
+          }}
           aria-current={location.pathname === "/" ? "page" : undefined}
         >
-          <ListItemIcon>
+          <ListItemIcon sx={{ color: "inherit" }}>
             <DashboardIcon />
           </ListItemIcon>
 
@@ -41,10 +56,14 @@ function Sidebar() {
         <ListItemButton
           component={Link}
           to="/jobs"
-          className="sidebar-item"
+          sx={{
+            color: location.pathname === "/jobs" ? "primary.main" : "inherit",
+            bgcolor: location.pathname === "/jobs" ? "action.selected" : "transparent",
+            "&:hover": { bgcolor: "action.hover" },
+          }}
           aria-current={location.pathname === "/jobs" ? "page" : undefined}
         >
-          <ListItemIcon>
+          <ListItemIcon sx={{ color: "inherit" }}>
             <WorkIcon />
           </ListItemIcon>
 
@@ -54,12 +73,20 @@ function Sidebar() {
         <ListItemButton
           component={Link}
           to="/applications"
-          className="sidebar-item"
+          sx={{
+            color:
+              location.pathname === "/applications" ? "primary.main" : "inherit",
+            bgcolor:
+              location.pathname === "/applications"
+                ? "action.selected"
+                : "transparent",
+            "&:hover": { bgcolor: "action.hover" },
+          }}
           aria-current={
             location.pathname === "/applications" ? "page" : undefined
           }
         >
-          <ListItemIcon>
+          <ListItemIcon sx={{ color: "inherit" }}>
             <AssignmentIcon />
           </ListItemIcon>
 

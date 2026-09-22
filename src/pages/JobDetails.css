@@ -1,4 +1,4 @@
-/* Container Layout */
+
 .job-details-container {
   width: 100% !important;
   max-width: 100% !important;
@@ -13,7 +13,6 @@
   padding-left: 0 !important;
 }
 
-/* Header Banner Card */
 .header-banner-card {
   border-radius: 12px !important;
   border: 1px solid #e2e8f0 !important;
@@ -64,7 +63,6 @@
   border-radius: 6px !important;
 }
 
-/* Card General Styling */
 .spec-card-container,
 .app-panel-card-container {
   border-radius: 12px !important;
@@ -133,7 +131,6 @@
   line-height: 1.7;
 }
 
-/* Checklist Card */
 .eligibility-checklist-card {
   background-color: #f8fafc;
   border: 1px solid #e2e8f0;
@@ -169,7 +166,6 @@
   color: #334155;
 }
 
-/* Application Panel Column */
 .app-panel-title {
   font-weight: 700 !important;
   color: #0f172a;
@@ -251,7 +247,6 @@
   background-color: #4338ca !important;
 }
 
-/* Submission Modal Dialog */
 .dialog-paper-custom {
   border-radius: 16px !important;
   padding: 16px !important;

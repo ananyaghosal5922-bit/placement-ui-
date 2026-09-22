@@ -1,5 +1,6 @@
 import {
   AppBar,
+  Box,
   Toolbar,
   Typography,
   IconButton,
@@ -8,30 +9,63 @@ import {
 
 import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 
-import "./TopBar.css";
-
 function TopBar({ title, role, setRole }) {
   return (
-    <AppBar position="static" className="topbar">
-      <Toolbar className="topbar-toolbar">
+    <AppBar
+      position="static"
+      sx={{
+        backgroundColor: "#ffffff",
+        color: "#1f2937",
+        boxShadow: "none",
+      }}
+    >
+      <Toolbar
+        sx={{
+          minHeight: 64,
+          px: { xs: 2, sm: 3 },
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
 
-        <Typography className="topbar-title">
+        <Typography
+          sx={{
+            fontSize: "1.25rem",
+            fontWeight: 600,
+            lineHeight: 1.5,
+          }}
+        >
           {title}
         </Typography>
 
-        <div className="topbar-actions">
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",
+            gap: 1.5,
+          }}
+        >
 
-         
-          <IconButton className="notification-button">
+
+          <IconButton
+            sx={{
+              color: "inherit",
+              p: 1,
+            }}
+          >
             <NotificationsNoneIcon />
           </IconButton>
 
           <Chip
             label="Batch of 2024"
-            className="batch-chip"
+            sx={{
+              borderRadius: 1,
+              fontWeight: 500,
+            }}
           />
 
-        </div>
+        </Box>
 
       </Toolbar>
     </AppBar>

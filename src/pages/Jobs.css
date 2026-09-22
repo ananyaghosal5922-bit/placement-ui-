@@ -28,7 +28,6 @@
   margin-bottom: 8px !important;
 }
 
-/* Card Rules */
 .job-card {
   width: 100%;
   border-radius: 12px !important;
@@ -126,7 +125,6 @@
   box-shadow: none !important;
 }
 
-/* Search Bar Rules */
 .search-bar-wrapper {
   display: flex;
   gap: 12px;
@@ -172,7 +170,6 @@
   box-shadow: none !important;
 }
 
-/* Prevents horizontal scrolling caused by MUI Grid negative margins */
 .MuiGrid-container {
   width: 100% !important;
   margin-left: 0 !important;

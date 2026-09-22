@@ -1,11 +1,9 @@
 import { useLocation } from "react-router-dom";
-
+import { Box } from "@mui/material";
 
 import Sidebar from "../components/Sidebar";
 
 import TopBar from "../components/TopBar";
-
-import "./MainLayout.css";
 
 function MainLayout({ children, role, setRole }) {
   const location = useLocation();
@@ -27,28 +25,28 @@ function MainLayout({ children, role, setRole }) {
       return "Applications Tracker";
     }
 
-      return "Placement Portal";
+    return "Placement Portal";
   };
 
   return (
-    <div className="main-layout">
+    <Box sx={{ display: "flex" }}>
       <Sidebar />
 
-      <div className="main-content">
+      <Box sx={{ flex: 1 }}>
         <TopBar
-  title={getPageTitle()}
-  role={role}
-  setRole={setRole}
-/>
+          title={getPageTitle()}
+          role={role}
+          setRole={setRole}
+        />
 
-        <main 
-         className="page-content"
-  style={{ color: "black", backgroundColor: "white", minHeight: "500px" }}
->
+        <Box
+          component="main"
+          sx={{ color: "black", backgroundColor: "white", minHeight: "500px" }}
+        >
           {children}
-        </main>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 }
 export default MainLayout;

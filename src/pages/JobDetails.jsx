@@ -19,13 +19,12 @@ import WorkOutlinedIcon from "@mui/icons-material/WorkOutlined";
 import CheckCircleIcon from "@mui/icons-material/CheckCircle";
 import InsertDriveFileIcon from "@mui/icons-material/InsertDriveFile";
 import CloseIcon from "@mui/icons-material/Close";
-import "./JobDetails.css";
 
 function CustomTabPanel(props) {
   const { children, value, index, ...other } = props;
   return (
     <div role="tabpanel" hidden={value !== index} {...other}>
-      {value === index && <Box className="tab-panel-content">{children}</Box>}
+      {value === index && <Box sx={{ pt: 2 }}>{children}</Box>}
     </div>
   );
 }
@@ -67,67 +66,63 @@ export default function JobDetails() {
   };
 
   return (
-    <Box className="job-details-container">
-      {/* Back Button */}
+    <Box sx={{ p: { xs: 2, md: 4 }, maxWidth: 1280, mx: "auto" }}>
       <Button
         startIcon={<ArrowBackIcon />}
         onClick={() => navigate("/jobs")}
-        className="back-to-jobs-btn"
+        sx={{ mb: 2, textTransform: "none" }}
       >
         Back to Jobs
       </Button>
 
-      {/* Main Company / Role Banner Header */}
-      <Card className="header-banner-card">
-        <CardContent className="header-banner-content">
-          <Box className="company-icon-box">
-            <WorkOutlinedIcon className="brand-work-icon" />
+      <Card sx={{ mb: 3, borderRadius: 2 }}>
+        <CardContent sx={{ display: "flex", alignItems: "center", gap: 2, p: 3 }}>
+          <Box sx={{ display: "flex", alignItems: "center", justifyContent: "center", width: 52, height: 52, borderRadius: 2, bgcolor: "primary.main", color: "primary.contrastText" }}>
+            <WorkOutlinedIcon />
           </Box>
-          <Box className="header-text-details">
-            <Typography variant="h5" className="role-heading">
+          <Box sx={{ flex: 1 }}>
+            <Typography variant="h5" sx={{ fontWeight: 700 }}>
               Software Engineer - Developer Relations
             </Typography>
-            <Typography variant="body2" className="company-sub-line">
+            <Typography variant="body2" color="text.secondary">
               Stripe India • Bengaluru, KA • Posted 2 days ago
             </Typography>
           </Box>
-          <Chip label="Eligible" className="eligible-status-chip" />
+          <Chip label="Eligible" color="success" />
         </CardContent>
       </Card>
 
-      {/* Two Column Section */}
-      <Grid container spacing={3} className="details-grid-wrapper">
-        {/* Left Column: Job Specification & Eligibility */}
+      <Grid container spacing={3}>
+
         <Grid item xs={12} md={8}>
-          <Card className="spec-card-container">
-            <CardContent className="card-content-padding">
-              <Typography variant="h6" className="spec-main-title">
+          <Card sx={{ height: "100%", borderRadius: 2 }}>
+            <CardContent sx={{ p: 3 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
                 Job Specification
               </Typography>
 
               <Tabs
                 value={tabIndex}
                 onChange={handleTabChange}
-                className="spec-navigation-tabs"
+                sx={{ mb: 1, borderBottom: 1, borderColor: "divider" }}
               >
-                <Tab label="Job Description" className="tab-item-btn" />
-                <Tab label="Eligibility Criteria" className="tab-item-btn" />
-                <Tab label="About Company" className="tab-item-btn" />
+                <Tab label="Job Description" />
+                <Tab label="Eligibility Criteria" />
+                <Tab label="About Company" />
               </Tabs>
 
-              {/* Tab 1: Description */}
               <CustomTabPanel value={tabIndex} index={0}>
-                <Typography className="section-block-title">
+                <Typography sx={{ fontWeight: 700, mb: 1 }}>
                   About Stripe
                 </Typography>
-                <Typography variant="body2" className="body-description-text">
+                <Typography variant="body2" sx={{ lineHeight: 1.7 }}>
                   Stripe is a financial infrastructure platform for businesses. Millions of companies—from the world’s largest enterprises to the most ambitious startups—use Stripe to accept payments, grow their revenue, and accelerate new business opportunities.
                 </Typography>
 
-                <Typography className="section-block-title section-spacing-top">
+                <Typography sx={{ fontWeight: 700, mt: 3, mb: 1 }}>
                   Responsibilities
                 </Typography>
-                <ul className="responsibilities-list">
+                <ul style={{ marginTop: 0, paddingLeft: 24, lineHeight: 1.8 }}>
                   <li>Build developer resources, tutorials, and documentation for API integrations.</li>
                   <li>Design high-volume distributed developer tooling and scalable API endpoints.</li>
                   <li>Advocate for developers internally and directly improve product user experience.</li>
@@ -135,49 +130,46 @@ export default function JobDetails() {
                 </ul>
               </CustomTabPanel>
 
-              {/* Tab 2: Eligibility */}
               <CustomTabPanel value={tabIndex} index={1}>
-                <Typography className="section-block-title">
+                <Typography sx={{ fontWeight: 700, mb: 1 }}>
                   Academic Requirements
                 </Typography>
-                <Typography variant="body2" className="body-description-text">
+                <Typography variant="body2" sx={{ lineHeight: 1.7 }}>
                   Must be enrolled in B.Tech / B.E. Computer Science, Information Technology, or related circuit branches with no active backlogs at the time of drive registration.
                 </Typography>
               </CustomTabPanel>
 
-              {/* Tab 3: About Company */}
               <CustomTabPanel value={tabIndex} index={2}>
-                <Typography className="section-block-title">
+                <Typography sx={{ fontWeight: 700, mb: 1 }}>
                   Global Operations
                 </Typography>
-                <Typography variant="body2" className="body-description-text">
+                <Typography variant="body2" sx={{ lineHeight: 1.7 }}>
                   Stripe operates in over 40 countries, handling hundreds of billions of dollars every year for forward-thinking businesses around the world.
                 </Typography>
               </CustomTabPanel>
 
-              {/* Your Eligibility Checklist Card */}
-              <Box className="eligibility-checklist-card">
-                <Typography className="checklist-card-title">
+              <Box sx={{ mt: 3, p: 2, bgcolor: "action.hover", borderRadius: 2 }}>
+                <Typography sx={{ fontWeight: 700, mb: 1 }}>
                   Your Eligibility Checklist
                 </Typography>
 
-                <Box className="checklist-row">
-                  <CheckCircleIcon className="check-icon-green" />
-                  <Typography variant="body2" className="checklist-label-text">
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+                  <CheckCircleIcon color="success" />
+                  <Typography variant="body2">
                     <strong>CGPA Requirement:</strong> Your CGPA 8.2 (Req: 7.5+)
                   </Typography>
                 </Box>
 
-                <Box className="checklist-row">
-                  <CheckCircleIcon className="check-icon-green" />
-                  <Typography variant="body2" className="checklist-label-text">
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1, mb: 1 }}>
+                  <CheckCircleIcon color="success" />
+                  <Typography variant="body2">
                     <strong>No Active Backlogs:</strong> Verified (0 Active)
                   </Typography>
                 </Box>
 
-                <Box className="checklist-row">
-                  <CheckCircleIcon className="check-icon-green" />
-                  <Typography variant="body2" className="checklist-label-text">
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1 }}>
+                  <CheckCircleIcon color="success" />
+                  <Typography variant="body2">
                     <strong>Branch Eligibility:</strong> CSE, IT, ECE Eligible (Your branch: CSE)
                   </Typography>
                 </Box>
@@ -186,56 +178,55 @@ export default function JobDetails() {
           </Card>
         </Grid>
 
-        {/* Right Column: Application Panel */}
         <Grid item xs={12} md={4}>
-          <Card className="app-panel-card-container">
-            <CardContent className="card-content-padding">
-              <Typography variant="h6" className="app-panel-title">
+          <Card sx={{ height: "100%", borderRadius: 2 }}>
+            <CardContent sx={{ p: 3 }}>
+              <Typography variant="h6" sx={{ fontWeight: 700 }}>
                 Application Panel
               </Typography>
-              <Typography variant="caption" className="app-panel-subtitle">
+              <Typography variant="caption" sx={{ display: "block", mb: 3, color: "text.secondary" }}>
                 VERIFY YOUR PROFILE DETAILS BEFORE SUBMITTING
               </Typography>
 
-              <Box className="panel-field-group">
-                <Typography className="panel-field-label">FULL NAME</Typography>
-                <Typography className="panel-field-value"> Ananya Ghosal</Typography>
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="caption" sx={{ display: "block", fontWeight: 700 }}>FULL NAME</Typography>
+                <Typography>Ananya Ghosal</Typography>
               </Box>
 
-              <Box className="panel-field-group">
-                <Typography className="panel-field-label">EMAIL ADDRESS</Typography>
-                <Typography className="panel-field-value">ananya.ghosal@university.edu</Typography>
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="caption" sx={{ display: "block", fontWeight: 700 }}>EMAIL ADDRESS</Typography>
+                <Typography>ananya.ghosal@university.edu</Typography>
               </Box>
 
-              <Box className="panel-field-group">
-                <Typography className="panel-field-label">PHONE NUMBER</Typography>
-                <Typography className="panel-field-value">+91 98765 43210</Typography>
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="caption" sx={{ display: "block", fontWeight: 700 }}>PHONE NUMBER</Typography>
+                <Typography>+91 98765 43210</Typography>
               </Box>
 
-              <Box className="panel-field-group">
-                <Typography className="panel-field-label">RESUME / CV ATTACHED</Typography>
-                <Box className="resume-badge-box">
-                  <InsertDriveFileIcon className="resume-file-icon" />
-                  <Typography className="resume-file-name">
+              <Box sx={{ mb: 2 }}>
+                <Typography variant="caption" sx={{ display: "block", fontWeight: 700 }}>RESUME / CV ATTACHED</Typography>
+                <Box sx={{ display: "flex", alignItems: "center", gap: 1, mt: 1 }}>
+                  <InsertDriveFileIcon color="primary" />
+                  <Typography variant="body2">
                     Resume_Ananya_Ghosal_2024.pdf
                   </Typography>
                 </Box>
               </Box>
 
-              <Box className="panel-field-group">
-                <Typography className="panel-field-label">KEY SKILLS MATCHED</Typography>
-                <Box className="skills-chip-wrapper">
-                  <Chip label="Python" size="small" className="skill-chip" />
-                  <Chip label="Data Structures" size="small" className="skill-chip" />
-                  <Chip label="React.js" size="small" className="skill-chip" />
-                  <Chip label="API Development" size="small" className="skill-chip" />
+              <Box sx={{ mb: 3 }}>
+                <Typography variant="caption" sx={{ display: "block", fontWeight: 700 }}>KEY SKILLS MATCHED</Typography>
+                <Box sx={{ display: "flex", flexWrap: "wrap", gap: 1, mt: 1 }}>
+                  <Chip label="Python" size="small" />
+                  <Chip label="Data Structures" size="small" />
+                  <Chip label="React.js" size="small" />
+                  <Chip label="API Development" size="small" />
                 </Box>
               </Box>
 
               <Button
                 variant="contained"
                 fullWidth
-                className="submit-application-btn"
+                sx={{ mt: 1, py: 1.25, fontWeight: 700 }}
                 onClick={handleApply}
               >
                 Submit Application
@@ -245,44 +236,42 @@ export default function JobDetails() {
         </Grid>
       </Grid>
 
-      {/* Modal Popup: Application Submitted */}
       <Dialog
         open={openDialog}
         onClose={handleCloseDialog}
-        className="submission-dialog-container"
         PaperProps={{
-          className: "dialog-paper-custom",
+          sx: { borderRadius: 2, maxWidth: 440 },
         }}
       >
         <IconButton
           onClick={handleCloseDialog}
-          className="dialog-close-icon-btn"
+          sx={{ position: "absolute", right: 8, top: 8 }}
         >
           <CloseIcon />
         </IconButton>
-        <DialogContent className="dialog-inner-content">
-          <Box className="modal-success-icon-circle">
-            <CheckCircleIcon className="modal-check-mark" />
+        <DialogContent sx={{ p: 4, textAlign: "center" }}>
+          <Box sx={{ display: "inline-flex", p: 1.5, borderRadius: "50%", bgcolor: "success.light", color: "success.main" }}>
+            <CheckCircleIcon />
           </Box>
 
-          <Typography variant="h6" className="modal-title-text">
+          <Typography variant="h6" sx={{ mt: 2, fontWeight: 700 }}>
             Application Submitted!
           </Typography>
 
-          <Typography variant="body2" className="modal-body-subtext">
+          <Typography variant="body2" sx={{ mt: 1, color: "text.secondary" }}>
             Your profile has been shared with Stripe India. You will receive updates directly in your portal.
           </Typography>
 
-          <Box className="app-ref-box">
-            <Typography className="ref-box-label">APPLICATION REF ID</Typography>
-            <Typography className="ref-box-id">{applicationId}</Typography>
+          <Box sx={{ mt: 3, p: 2, bgcolor: "action.hover", borderRadius: 1 }}>
+            <Typography variant="caption" sx={{ display: "block", fontWeight: 700 }}>APPLICATION REF ID</Typography>
+            <Typography sx={{ fontWeight: 700 }}>{applicationId}</Typography>
           </Box>
 
           <Button
             variant="contained"
             fullWidth
             onClick={handleCloseDialog}
-            className="dialog-done-action-btn"
+            sx={{ mt: 3, py: 1.25, fontWeight: 700 }}
           >
             Done
           </Button>
